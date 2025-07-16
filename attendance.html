@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Attendance</title>
+  <link rel="stylesheet" href="attendance.css">
+</head>
+<body>
+  <div class="main-section">
+    <div class="text-section">
+      <h1>Welcome</h1>
+  <h2>Logging Attendance...</h2>
+  <p id="status">Please wait...</p>
+  <p id="countdown"></p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+
+    const endpoint = "https://script.google.com/macros/s/AKfycbzm4M3npTffFfR_A_NF46DGt0SmVANR3_IU8Es9oY1mvC6DdJvPgtj_IrxkkSk_Yx4t/exec";
+
+    const countdownText = document.getElementById("countdown");
+
+    if (!name) {
+      document.getElementById("status").innerText = "Error: No name in URL.";
+    } else {
+      fetch(endpoint + "?name=" + encodeURIComponent(name))
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("status").innerText = data;
+        })
+         .then(data => {
+          document.getElementById("countdown").innerText = data;
+          startCountdown();
+        })
+        .catch(error => {
+          document.getElementById("status").innerText = "Error logging attendance.";
+        });
+    }
+
+    function startCountdown() {
+      let seconds = 10;
+      countdownText.innerText = `Closing in ${seconds} seconds...`;
+
+      const interval = setInterval(() => {
+        seconds--;
+        countdownText.innerText = `Closing in ${seconds} seconds...`;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.close(); // Closes the tab (works on mobile sometimes)
+        }
+      }, 1000);
+    }
+  </script>
+    </div>
+
+  </div>
+  </body>
+</html>
