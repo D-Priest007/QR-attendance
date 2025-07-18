@@ -1,11 +1,12 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: "Intel One Mono", monospace;
 }
 
 body {
     display: flex;
-    background: url(/3886130.jpg) center;
+    background: url(images/3886130.jpg) center;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -28,9 +29,18 @@ body {
     border-radius: 50px;
 }
 
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    margin-bottom: 40px;
+}
+
 p {
-    font-weight: bold;
-    color: green;
+    font-family: "Bitcount Single", system-ui;
+    font-weight: 400;
+    color: rgb(3, 95, 3);
 }
     
 .main-section {
