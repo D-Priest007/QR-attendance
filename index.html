@@ -24,7 +24,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
 
-    const endpoint = "https://script.google.com/macros/s/AKfycbw54rrGYsnpsuhxO1jIhGklVEnaa2hL9FRNydk3oGN277gPcYDIAIBm2sh0-q2LiXLz/exec";
+    const endpoint = "https://script.google.com/macros/s/AKfycbxlkpL6c75euc8HfjtZC0-0gXDVvTddhY4de1dYKhutJH7h9_RlyjS-j5fN2dNqQvX8/exec";
 
     const countdownText = document.getElementById("countdown");
 
@@ -41,7 +41,7 @@
           startCountdown();
         })
         .catch(error => {
-          document.getElementById("status").innerText = "Error logging attendance.";
+          document.getElementById("status").innerText = "Error logging attendance: " + error;
         });
     }
 
